@@ -5,6 +5,8 @@ import { ErrorPage } from './../pages/Error'
 import { Todo } from '../pages/todo/Todo'
 import { Message } from '../pages/message/Message'
 import { My } from '../pages/my/My'
+import {Login} from '../pages/auth/Login'
+
 const router = createHashRouter([
   {
     path: "/",
@@ -15,6 +17,7 @@ const router = createHashRouter([
         index: true,
         element: <Home />
       },
+      
       {
         path: 'todo',
         index: true,
@@ -32,6 +35,10 @@ const router = createHashRouter([
       },
     ],
     errorElement: <ErrorPage />,
+  },
+  {
+    path: '/login',
+    element: <Login />
   },
 ]);
 

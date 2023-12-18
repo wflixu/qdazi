@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Badge, TabBar } from 'antd-mobile'
 import { Outlet } from 'react-router-dom'
 import './../style/layout.css'
@@ -47,6 +47,14 @@ export function Layout() {
         setActiveKey(key)
         navigate(`/${key}`)
     }
+
+    useEffect(()=>{
+        const token = window.localStorage.getItem('qdazi_token')
+        if(!token) {
+            console.log(navigate)
+            navigate(`/login`)
+        }
+    },[])
 
     return (
         <div className="layout">

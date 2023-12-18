@@ -1,6 +1,7 @@
 
 .layout {
     height: 100vh;
+    height: -webkit-fill-available;
     .content {
         height: calc(100vh - 50px);
     }
