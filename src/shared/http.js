@@ -1,7 +1,7 @@
 import { HttpClient } from "obfetch";
-import { useSystemStore } from "../store/system";
 
-const BASE_URL = "http://127.0.0.1:8443";
+
+const BASE_URL = import.meta.env.PROD ? 'https://www.wflixu.cn/api' : "http://127.0.0.1:8443";
 
 const http = new HttpClient({
   baseURL: BASE_URL,
