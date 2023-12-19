@@ -1,8 +1,8 @@
 import { HttpClient } from "obfetch";
 
 
-// const BASE_URL =  'https://www.wflixu.cn/api';
-const BASE_URL = import.meta.env.PROD ? 'http://121.4.46.56:8443' : "http://127.0.0.1:8443";
+// const BASE_URL =  'http://api.wflixu.cn';
+const BASE_URL = import.meta.env.PROD ? 'http://api.wflixu.cn' : "http://127.0.0.1:8443";
 
 const http = new HttpClient({
   baseURL: BASE_URL,
