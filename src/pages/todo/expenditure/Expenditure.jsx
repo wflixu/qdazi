@@ -9,13 +9,14 @@ import './expenditure.css'
 export function Expenditure() {
 
     const [show, setShow] = useState(false)
-
+    const [refreshKey, setRefreshKey] = useState(0);  
 
     const toggleEditor = () => {
         setShow(!show);
     }
     const afterFinish = () =>{
         setShow(false)
+        setRefreshKey(refreshKey + 1);  
     }
     return (
         <div className="expenditure">
@@ -25,7 +26,7 @@ export function Expenditure() {
                 show ? <ExpenditureRecord afterFinish={afterFinish}/> : null
             }
             <div className='line'>
-                <GasConsumeLine />
+                <GasConsumeLine key={refreshKey}  />
             </div>
         </div>
     )

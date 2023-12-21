@@ -17,43 +17,12 @@ export function Login() {
     const setUser = useSystemStore(state => state.setUser)
     const navigate = useNavigate();
 
-     const fetchdata = async (values) => {
-        try {
-    
-            const response = await fetch('http://121.4.46.56:8443/passport/login', {
-                // fetch('https://www.wflixu.cn/api/passport/login', {
-                method: 'POST',
-                body: JSON.stringify(values),
-                mode: 'cors',
-                redirect: "manual", // manual, *follow, error
-                referrerPolicy: "no-referrer",
-            });
-            const res =  response.json();
-    
-            if (res.code == 200) {
-                const { token, user } = res.data;
-                console.log(token, user)
-                setToken(token)
-                setUser(user);
-                navigate('/home')
-            }
-        } catch (error) {
-            console.log(error)
-        }
-       
-     }
+
     const onFinish =  (values) => {
-        // console.warn(values);
-        // fetchdata(values)
-        
-        // // }).catch(error => {
-        // //     console.log(error)
-        // // })
         http.post('/passport/login', values).subscribe(res => {
             console.log(res)
             if (res.code == 200) {
                 const { token, user } = res.data;
-                console.log(token, user)
                 setToken(token)
                 setUser(user);
                 navigate('/home')
