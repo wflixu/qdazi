@@ -80,7 +80,7 @@ export function GasConsumeLine() {
                      name: '当前用量：',
                      field: 'count',
                      valueFormatter: (v) => {
-                        return v.toFixed(0);
+                        return v.toFixed(2);
                      }
                   },
                ]
