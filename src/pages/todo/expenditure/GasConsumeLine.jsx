@@ -1,5 +1,5 @@
 import React from 'react';
-import { Line, DualAxes } from '@ant-design/charts';
+import { Line, DualAxes, Bar } from '@ant-design/charts';
 import { http } from '../../../shared/http';
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs'
@@ -38,10 +38,10 @@ export function GasConsumeLine() {
       xField: 'created',
       children: [
          {
-            type: 'line',
+            type: 'interval',
             yField: 'trend',
             style: {
-               lineWidth: 2,
+               maxWidth: 20,
             },
             tooltip: {
                items: [
