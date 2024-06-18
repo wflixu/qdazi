@@ -6,33 +6,43 @@
     <van-field
       v-model="account"
       placeholder="请输入用户名"
-      type="number"
-      :maxlength="6"
-     
+      :clearable="true"
+      type="digit"
+      :maxlength="maxLength"
+      :formatter="accountFormatter"
+      @clear="onClear"
     />
     <div>account: {{ account }}</div>
+    <div>
+      max: {{ maxLength }}
+    </div>
   </div>
 </template>
 
 <script setup>
 import Custome from "./components/Custome.vue";
-import { ref } from "vue";
+import { ref,computed } from "vue";
 const showPopup = ref(false);
 const account = ref("");
+const max = 5;
+const maxLength = computed(() => {
+   return max + Math.floor((max-1) /4)
+});
+const onClear = () => {
+  console.log('----')
+  // account.value = ''
+}
 
 const accountFormatter = (str) => {
-  console.log(str, typeof str);
-  let chunks = str.match(/.{1,4}/g);
-
-  // 如果最后一个元素长度小于4，则不需要添加"-"
-  if (chunks[chunks.length - 1].length < 4) {
-    // 移除最后一个"-"（如果有的话）
-    chunks[chunks.length - 2] = chunks[chunks.length - 2].slice(0, -1);
-  }
-
-  // 使用join方法将数组元素用"-"连接起来
-  return chunks.join("-");
+  console.log('str:', str)
+  console.log('value:', account.value);
+  let input = str.replace(/\s/g, '');
+    // 使用正则表达式匹配每4位数字，中间添加空格
+    return input.replace(/\d{4}(?=\d)/g, '$& ');
+  
 };
+
+
 
 const onStart = () => {
   console.log("test");
